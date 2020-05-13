@@ -1,0 +1,33 @@
+
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: dtm_development
+  username: <%= ENV['DB_USERNAME'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
+  encoding: unicode
+  host: localhost
+  pool: 5
+
+test:
+  <<: *default
+  database: dtm_test
+  username: <%= ENV['DB_USERNAME'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
+  encoding: unicode
+  host: localhost
+  pool: 5
+
+production:
+  <<: *default
+  adapter: postgresql
+  host: 127.0.0.1
+  database: dtm
+  username: deployer
+  password:
+  encoding: unicode
+  pool: 5
