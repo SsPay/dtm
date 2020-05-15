@@ -1,1 +1,9 @@
-<%= link_to "sign in", new_user_registration_path %>
+<% if current_user %>
+  <%= link_to "Create Team", new_team_path %>
+  <br>
+  <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "nav-link" %>
+<% else %>
+  <%= link_to "sign in", new_user_registration_path %>
+<% end %>
+<br>
+<%= link_to "teams", teams_path %>

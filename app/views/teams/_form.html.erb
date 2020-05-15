@@ -1,0 +1,22 @@
+<div class="container">
+  <%= form_with(model: @team, local: true) do |form| %>
+    <% if @team.errors.any? %>
+      <div class="alert alert-danger">
+        <ul>
+          <% @team.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field mt-5">
+      <%= form.label :name %>
+      <%= form.text_field :name, class: "form-control"%>
+    </div>
+
+    <div class="ml-auto mt-2">
+      <%= form.submit 'Submit', class: "btn btn-outline-dark" %>
+    </div>
+  <% end %>
+</div>
