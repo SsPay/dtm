@@ -1,6 +1,12 @@
 <% @teams.each do |team| %>
   <%= team.name %>
-  <% team.user.each do |user| %>
+  <% if team.users.include?(current_user) %>
+    <b>already joined</b>
+  <% else %>
+    <%= link_to "Join", join_teams_path(team_id: team.id) %>
+  <% end %>
+  <% team.users.each do |user| %>
     <%= user.email %>
   <% end %>
+  <br>
 <% end %>

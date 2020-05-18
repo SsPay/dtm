@@ -4,5 +4,5 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :team_user
-  has_many :team, through: :team_user
+  has_many :teams, through: :team_user
 end

@@ -36,6 +36,12 @@ class TeamsController < ApplicationController
     redirect_to root_path
   end
 
+  def join
+    @team = Team.find(params[:team_id])
+    @team.users << current_user
+    redirect_to root_path
+  end
+
   private
 
   def set_team
