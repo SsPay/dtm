@@ -1,0 +1,7 @@
+<h1><%= @team.name %></h1>
+<p>Creator:</p>
+<%= @creator %>
+<p>Members:</p>
+<% @members.each do |member| %>
+  <%= member.user.email %>
+<% end %>

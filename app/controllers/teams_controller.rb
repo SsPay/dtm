@@ -5,7 +5,11 @@ class TeamsController < ApplicationController
     @teams = Team.all.order('name asc')
   end
 
-  def show; end
+  def show
+    @members = TeamUser.where(team_id: @team.id, role: 'member')
+    @creator = TeamUser.where(team_id: @team.id, role: 'organizer').first.user.email
+
+  end
 
   def new
     @team = Team.new
@@ -39,7 +43,7 @@ class TeamsController < ApplicationController
 
   def join
     @team = Team.find(params[:team_id])
-    @team.users << current_user
+    @team.team_user.create(user_id: current_user.id, role: 'member')
     redirect_to root_path
   end
 

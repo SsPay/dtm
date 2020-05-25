@@ -1,5 +1,5 @@
 <% @teams.each do |team| %>
-  <%= team.name %>
+  <%= link_to team.name, team_path(team) %>
   <% if team.users.include?(current_user) %>
     <b>already joined</b>
   <% else %>
