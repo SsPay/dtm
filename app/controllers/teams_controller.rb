@@ -13,8 +13,9 @@ class TeamsController < ApplicationController
 
   def create
     @team = Team.new(team_params)
-    @team.user_ids = current_user.id
+    #@team.user_ids = current_user.id
     if @team.save
+      @team.team_user.create(user_id: current_user.id, role: 'organizer')
       redirect_to root_path, notice: "Team #{@team.name} has been created"
     else
       render :new

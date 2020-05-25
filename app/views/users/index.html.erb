@@ -3,7 +3,7 @@
   <br>
   <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "nav-link" %>
 <% else %>
-  <%= link_to "sign in", new_user_registration_path %>
+  <%= link_to "sign in", new_user_session_path %>
 <% end %>
 <br>
 <%= link_to "teams", teams_path %>
