@@ -1,6 +1,7 @@
 <% if current_user %>
   <%= link_to "Create Team", new_team_path %>
   <br>
+  <b><%= current_user.email %></b>
   <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "nav-link" %>
 <% else %>
   <%= link_to "sign in", new_user_session_path %>

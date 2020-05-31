@@ -1,4 +1,5 @@
 class Team < ApplicationRecord
+  mount_uploader :logo, TeamLogoUploader
   has_many :team_user
   has_many :users, through: :team_user
 end

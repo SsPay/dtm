@@ -15,6 +15,11 @@
       <%= form.text_field :name, class: "form-control"%>
     </div>
 
+    <div class="field mt-5">
+      <%= form.label :logo %>
+      <%= form.file_field :logo, class: "form-control"%>
+    </div>
+
     <div class="ml-auto mt-2">
       <%= form.submit 'Submit', class: "btn btn-outline-dark" %>
     </div>

@@ -8,6 +8,8 @@ gem 'rails', '~> 6.0.2', '>= 6.0.2.2'
 # Use pg as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'devise'
+gem 'carrierwave', '~> 2.0'
+gem "mini_magick"
 # Use Puma as the app server
 gem 'puma', '~> 4.1'
 # Use SCSS for stylesheets
