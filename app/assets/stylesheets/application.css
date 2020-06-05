@@ -13,3 +13,16 @@
  *= require_tree .
  *= require_self
  */
+ .grid-container {
+   display: grid;
+   grid-template-columns: 0.3fr 1.9fr 0.8fr;
+   grid-template-rows: 1fr;
+   gap: 1px 1px;
+   grid-template-areas: "indent main dop";
+ }
+
+ .dop { grid-area: dop; }
+
+ .main { grid-area: main; }
+
+ .indent { grid-area: indent; }

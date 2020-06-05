@@ -1,13 +1,18 @@
-<% @teams.each do |team| %>
-  <%= link_to team.name, team_path(team) %>
-  <%= image_tag team.logo.url(:thumb) if team.logo.url(:thumb).present? %>
-  <% if team.users.include?(current_user) %>
-    <b>already joined</b>
-  <% else %>
-    <%= link_to "Join", join_teams_path(team_id: team.id) %>
-  <% end %>
-  <% team.users.each do |user| %>
-    <%= user.email %>
-  <% end %>
-  <br>
-<% end %>
+<div class="grid-container">
+  <div class="dop"><p>news will be right here</p></div>
+  <div class="main">
+    <% @teams.each do |team| %>
+      <%= link_to team.name, team_path(team) %>
+      <% if team.users.include?(current_user) %>
+        <b>already joined</b>
+      <% else %>
+        <%= link_to "Join", join_teams_path(team_id: team.id) %>
+      <% end %>
+      <% team.users.each do |user| %>
+        <%= user.email %>
+      <% end %>
+      <br>
+    <% end %>
+  </div>
+  <div class="indent"><p>here is just indent</p></div>
+</div>
