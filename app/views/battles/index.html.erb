@@ -1,0 +1,7 @@
+<% @battles.each do |battle| %>
+  <%= battle.id %>
+  <br>
+  <% battle.teams.each do |team| %>
+    <%= team.name %>
+  <% end %>
+<% end %>

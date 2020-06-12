@@ -1,0 +1,19 @@
+<div class="container">
+  <%= form_with(model: @battle, local: true) do |form| %>
+    <% if @battle.errors.any? %>
+      <div class="alert alert-danger">
+        <ul>
+          <% @battle.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <%= form.collection_select(:team_id, Team.all, :id, :name, class: 'form-control' ) %>
+
+    <div class="ml-auto mt-2">
+      <%= form.submit 'Submit', class: "btn btn-outline-dark" %>
+    </div>
+  <% end %>
+</div>
