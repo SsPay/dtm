@@ -1,6 +1,6 @@
 <% @battles.each do |battle| %>
   <br>
-  <% battle.teams.each do |team| %>
-    <%= team.name %>
-  <% end %>
+  <p><b>Battle #<%= battle.id %></b></p>
+  <small><%= battle.teams.first.name %></small>
+  <hr>
 <% end %>

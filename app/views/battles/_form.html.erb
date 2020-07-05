@@ -1,6 +1,6 @@
 <%= form_with(model: @battle, local: true) do |form| %>
 <div class="field">
-  <%= form.collection_select(:team_id, @teams, :id, :name) %>
+  <%= form.collection_select(:team_id, @teams, :id, :name, prompt: '----') %>
 </div>
   <%= form.submit 'Submit'%>
 <% end %>
