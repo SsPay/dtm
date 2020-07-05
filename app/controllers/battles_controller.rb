@@ -20,6 +20,12 @@ class BattlesController < ApplicationController
     end
   end
 
+  def join
+    @battle = Battle.find(params[:battle_id])
+    @battle.teams << current_user.teams.first
+    redirect_to root_path
+  end
+
   private
 
   def set_battle

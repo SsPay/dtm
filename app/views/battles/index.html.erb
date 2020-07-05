@@ -2,5 +2,6 @@
   <br>
   <p><b>Battle #<%= battle.id %></b></p>
   <small><%= battle.teams.first.name %></small>
+  <%= link_to 'Join', join_battles_path(battle_id: battle.id) %>
   <hr>
 <% end %>
