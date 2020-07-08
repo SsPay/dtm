@@ -2,6 +2,7 @@ class BattlesController < ApplicationController
 
   def index
     @battles = Battle.all
+    @teams = Team.all
   end
 
   def new
@@ -22,8 +23,8 @@ class BattlesController < ApplicationController
 
   def join
     @battle = Battle.find(params[:battle_id])
-    @battle.teams << current_user.teams.first
-    redirect_to root_path
+    @battle.teams << Team.find(params[:team_id][:team_id])
+    redirect_to root_url
   end
 
   private

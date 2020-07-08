@@ -1,7 +1,13 @@
 <% @battles.each do |battle| %>
   <br>
   <p><b>Battle #<%= battle.id %></b></p>
-  <small><%= battle.teams.first.name %></small>
-  <%= link_to 'Join', join_battles_path(battle_id: battle.id) %>
+  <small><%= battle.teams.first.name %></small> | <small><%= battle.teams&.second&.name %></small>
+
+<%= form_with(url: join_battles_path, method: "get") do %>
+
+  <%= collection_select(:team_id, :team_id, Team.all, :id, :name) %>
+  <%= hidden_field_tag 'battle_id', battle.id %>
+  <%= submit_tag("Join") %>
+<% end %>
   <hr>
 <% end %>
