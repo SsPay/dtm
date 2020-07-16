@@ -1,8 +1,8 @@
 class BattlesController < ApplicationController
 
   def index
-    @battles = Battle.all
-    @teams = Team.all
+    @battles = Battle.where(closed: false)
+    @teams = current_user.teams
   end
 
   def new
@@ -11,7 +11,7 @@ class BattlesController < ApplicationController
   end
 
   def create
-    @battle = Battle.new
+    @battle = Battle.new(battle_params)
     @battle.user_id = current_user.id
     @battle.teams << Team.find(params[:battle][:team_id])
     if @battle.save
@@ -34,6 +34,6 @@ class BattlesController < ApplicationController
   end
 
   def battle_params
-    params.require(:battle).permit(:team_id)
+    params.require(:battle).permit(:closed, team_ids: [])
   end
 end
