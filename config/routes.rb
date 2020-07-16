@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root 'users#index'
   get 'join', to: 'teams#join'
   devise_for :users
-  resources :user
+  resources :users
   resources :battles do
     collection do
       get 'join'
