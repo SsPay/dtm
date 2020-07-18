@@ -13,7 +13,7 @@ class BattlesController < ApplicationController
   def create
     @battle = Battle.new(battle_params)
     @battle.user_id = current_user.id
-    @battle.teams << Team.find(params[:battle][:team_id])
+    @battle.teams << Team.find(params[:battle][:team_ids])
     if @battle.save
       redirect_to root_path, notice: "Battle has been created"
     else
