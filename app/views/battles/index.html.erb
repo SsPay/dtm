@@ -7,10 +7,20 @@
     <%= form_with(url: join_battles_path, method: "get") do %>
       <%= collection_select(:team_id, :team_id, Team.all, :id, :name) %>
       <%= hidden_field_tag 'battle_id', battle.id %>
-      <%= submit_tag("Join") %>
+      <%= submit_tag "Join", class: 'btn btn-primary btn-sm' %>
     <% end %>
   <% end %>
 
+  <div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Dropdown button
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      <a class="dropdown-item" href="#">Action</a>
+      <a class="dropdown-item" href="#">Another action</a>
+      <a class="dropdown-item" href="#">Something else here</a>
+    </div>
+  </div>
 
   <hr>
 <% end %>
