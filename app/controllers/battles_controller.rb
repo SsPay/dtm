@@ -24,7 +24,7 @@ class BattlesController < ApplicationController
   def join
     @battle = Battle.find(params[:battle_id])
     @battle.teams << Team.find(params[:team_id][:team_id])
-    redirect_to root_path
+    redirect_back(fallback_location: root_path)
   end
 
   private
