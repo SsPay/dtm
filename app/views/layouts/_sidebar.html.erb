@@ -7,7 +7,7 @@
     <% end %>
     <%= link_to "Create Team", new_team_path, class: "w3-bar-item w3-button" %>
   <% else %>
-    <%= link_to "sign in", new_user_session_path %>
+    <%= link_to "sign in", new_user_session_path, class: "w3-bar-item w3-button" %>
   <% end %>
   <%= link_to "teams", teams_path, class: "w3-bar-item w3-button" %>
   <%= link_to "Create battle", new_battle_path, class: "w3-bar-item w3-button" %>
