@@ -2,28 +2,37 @@
   <button class="w3-bar-item w3-button w3-large"
   onclick="w3_close()">Close &times;</button>
   <% if current_user %>
-    <%= link_to user_path(current_user.id), class: "w3-bar-item w3-button" do %>
+    <%= link_to user_path(current_user.id), class: "w3-bar-item w3-button btn btn-dark disabled", :disabled => true do %>
       <span><i class="fas fa-user fa-lg"></i></span> <span><%= current_user.email %></span>
     <% end %>
-    <%= link_to new_team_path, class: "w3-bar-item w3-button" do %>
-      <span><i class="fas fa-plus fa-lg "></i></span> <span> Create team</span>
+    <%= link_to teams_path, class: "w3-bar-item w3-button" do %>
+      <span><i class="fas fa-users fa-lg"></i></span><span> Teams</span>
+    <% end %>
+    <%= link_to new_battle_path, class: "w3-bar-item w3-button" do %>
+      <span><i class="fas fa-trophy fa-lg"></i></span><span> Create battle</span>
+    <% end %>
+    <%= link_to battles_path, class: "w3-bar-item w3-button" do %>
+      <span><i class="fas fa-fire-alt fa-lg"></i></span><span> Battles</span>
+    <% end %>
+    <%= link_to destroy_user_session_path, method: :delete, class: "w3-bar-item w3-button" do %>
+      <span><i class="fas fa-sign-out-alt fa-lg"></i></span><span> Log out</span>
     <% end %>
   <% else %>
-    <%= link_to new_user_session_path, class: "w3-bar-item w3-button" do %>
-      <span><i class="fas fa-sign-in-alt fa-lg"></i></span><span>Log in</span>
+    <%= link_to new_user_session_path, class: "w3-bar-item w3-button btn btn-info" do %>
+      <span><i class="fas fa-sign-in-alt fa-lg"></i></span><span> Log in</span>
     <% end %>
-  <% end %>
-  <%= link_to teams_path, class: "w3-bar-item w3-button" do %>
-    <span><i class="fas fa-users fa-lg"></i></span><span> Teams</span>
-  <% end %>
-  <%= link_to new_battle_path, class: "w3-bar-item w3-button" do %>
-    <span><i class="fas fa-trophy fa-lg"></i></span><span> Create battle</span>
-  <% end %>
-  <%= link_to battles_path, class: "w3-bar-item w3-button" do %>
-    <span><i class="fas fa-fire-alt fa-lg"></i></span><span> Battles</span>
-  <% end %>
-  <%= link_to destroy_user_session_path, method: :delete, class: "w3-bar-item w3-button" do %>
-    <span><i class="fas fa-sign-out-alt fa-lg"></i></span><span> Log out</span>
+    <%= link_to teams_path, class: "w3-bar-item w3-button btn disabled", disabled: true do %>
+      <span><i class="fas fa-users fa-lg"></i></span><span> Teams</span>
+    <% end %>
+    <%= link_to new_battle_path, class: "w3-bar-item w3-button btn disabled", disabled: true do %>
+      <span><i class="fas fa-trophy fa-lg"></i></span><span> Create battle</span>
+    <% end %>
+    <%= link_to battles_path, class: "w3-bar-item w3-button btn disabled", disabled: true do %>
+      <span><i class="fas fa-fire-alt fa-lg"></i></span><span> Battles</span>
+    <% end %>
+    <%= link_to destroy_user_session_path, method: :delete, class: "w3-bar-item w3-button btn disabled", disabled: true do %>
+      <span><i class="fas fa-sign-out-alt fa-lg"></i></span><span> Log out</span>
+    <% end %>
   <% end %>
 </div>
 
