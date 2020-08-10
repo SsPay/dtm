@@ -1,7 +1,10 @@
-<h1><%= @user.nickname.present? ? @user.nickname : @user.email %></h1>
+<h1><%= @user.nickname.present? ? @user.nickname : @user.email %>
+  <b>[<%= @user.favourite_team_id.present? ? Team.where(id: @user.favourite_team_id).name.upcase : @user.teams.first.name.upcase %>]</b></h1>
 <b>Teams:</b>
 <br>
 <% @teams.each do |team| %>
   <%= link_to team.name, team_path(team) %>
   <br>
 <% end %>
+
+<%= link_to "Edit", edit_user_path %>

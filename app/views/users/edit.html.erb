@@ -1,0 +1,16 @@
+<div class="container">
+  <%= form_with(model: @user, local: true) do |form| %>
+    <% if @user.errors.any? %>
+      <div class="alert alert-danger">
+        <ul>
+          <% @user.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <%= collection_select(:favourite_team_id, :team_id, @user.teams, :id, :name) %>
+    <%= submit_tag "Submit", class: 'btn btn-primary btn-sm' %>
+  <% end %>
+</div>
