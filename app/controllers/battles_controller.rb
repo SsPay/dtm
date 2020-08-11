@@ -5,6 +5,10 @@ class BattlesController < ApplicationController
     @teams = current_user.teams
   end
 
+  def show
+    @battle = Battle.find(params[:id])
+  end
+
   def new
     @battle = Battle.new
     @teams = current_user.teams
@@ -27,6 +31,12 @@ class BattlesController < ApplicationController
     redirect_back(fallback_location: root_path)
   end
 
+  def set_winner
+    @battle = Battle.find(params[:battle_id])
+    @battle.update_attribute(:winner_id, params[:winner_id][:winner_id])
+    redirect_back(fallback_location: root_path)
+  end
+
   private
 
   def set_battle
@@ -34,6 +44,6 @@ class BattlesController < ApplicationController
   end
 
   def battle_params
-    params.require(:battle).permit(:closed, team_ids: [])
+    params.require(:battle).permit(:closed, :winner_id, team_ids: [])
   end
 end

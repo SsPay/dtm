@@ -1,6 +1,6 @@
 <% @battles.each do |battle| %>
   <br>
-  <p><b>Battle #<%= battle.id %></b></p>
+  <%= link_to "Battle ##{battle.id}", battle_path(battle) %><br>
   <small><%= battle.teams.first.name %></small> | <small><%= battle.teams&.second&.name %></small>
 
   <% if battle.teams.count < 2 %>

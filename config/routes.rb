@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :battles do
     collection do
       get 'join'
+      get 'set_winner'
     end
   end
   resources :teams do
