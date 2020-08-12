@@ -32,8 +32,14 @@ class BattlesController < ApplicationController
   end
 
   def set_winner
+    id = params[:winner_id][:winner_id]
+    puts "iiid: #{params[:winner_id][:winner_id]}"
     @battle = Battle.find(params[:battle_id])
     @battle.update_attribute(:winner_id, params[:winner_id][:winner_id])
+    @winner = @battle.teams.where(id: params[:winner_id][:winner_id]).first
+    @looser = @battle.teams.where.not(id: params[:winner_id][:winner_id]).first
+    @winner.update(rating: @winner.rating += 20)
+    @looser.update(rating: @looser.rating -= 20)
     redirect_back(fallback_location: root_path)
   end
 

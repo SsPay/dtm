@@ -1,6 +1,6 @@
 <h1>Battle #<%= @battle.id %></h1>
-<%= @battle.teams.first.name %> <%= @battle.winner_id == @battle.teams.first.id ? "<i class='fa fa-crown'></i>".html_safe : nil %> |
-<%= @battle.teams&.second&.name %> <%= @battle.winner_id == @battle.teams.second.id ? "<i class='fa fa-crown'></i>".html_safe : nil %>
+<%= @battle&.teams&.first.name %> <% @battle.winner_id == @battle&.teams&.first&.id and @battle.winner_id != nil ? "<i class='fa fa-crown'></i>".html_safe : nil %> |
+<%= @battle.teams&.second&.name %> <% @battle.winner_id == @battle.teams&.second&.id and @battle.winner_id != nil ? "<i class='fa fa-crown'></i>".html_safe : nil %>
 <% unless @battle.winner_id %>
   <%= form_tag(set_winner_battles_path, method: "get", id: "search-form mx-auto") do %>
   <%= collection_select(:winner_id, :winner_id, @battle.teams, :id, :name) %>

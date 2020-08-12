@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 2020_08_11_113526) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "logo"
     t.boolean "closed"
-    t.integer "rating"
+    t.integer "rating", default: 0
   end
 
   create_table "users", force: :cascade do |t|
@@ -61,6 +61,11 @@ ActiveRecord::Schema.define(version: 2020_08_11_113526) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "nickname"
+    t.string "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.integer "favourite_team_id"
+    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
