@@ -19,7 +19,7 @@ class BattlesController < ApplicationController
     @battle.user_id = current_user.id
     @battle.teams << Team.find(params[:battle][:team_ids])
     if @battle.save
-      redirect_to root_path, notice: "Battle has been created"
+      redirect_to battles_path, notice: "Battle has been created"
     else
       render :new
     end
@@ -32,14 +32,9 @@ class BattlesController < ApplicationController
   end
 
   def set_winner
-    id = params[:winner_id][:winner_id]
-    puts "iiid: #{params[:winner_id][:winner_id]}"
     @battle = Battle.find(params[:battle_id])
     @battle.update_attribute(:winner_id, params[:winner_id][:winner_id])
-    @winner = @battle.teams.where(id: params[:winner_id][:winner_id]).first
-    @looser = @battle.teams.where.not(id: params[:winner_id][:winner_id]).first
-    @winner.update(rating: @winner.rating += 20)
-    @looser.update(rating: @looser.rating -= 20)
+    RatingWorker.perform_async(params[:winner_id][:winner_id], @battle.id)
     redirect_back(fallback_location: root_path)
   end
 

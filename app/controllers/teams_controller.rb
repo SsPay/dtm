@@ -2,12 +2,7 @@ class TeamsController < ApplicationController
   before_action :set_team, only: %i[show edit update destroy]
 
   def index
-    # @teams = Team.all.order('name asc')
-    if params[:sort] == 'best'
-      @teams = Team.all.best
-    else
-      @teams = Team.all.order('name asc')
-    end
+    @teams = Team.all.best
   end
 
   def show

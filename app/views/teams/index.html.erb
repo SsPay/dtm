@@ -1,14 +1,6 @@
 <div class="grid-container">
   <div class="dop"><p>news will be right here</p></div>
   <div class="main">
-    <div class="dropdown float-right">
-  <button class="btn btn-secondary btn-sm dropdown-toggle sort-btn" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Sort
-  </button>
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <%= link_to "best", teams_path(sort: 'best'), class: "dropdown-item" %>
-  </div>
-</div>
     <% @teams.each do |team| %>
       <%= link_to team.name, team_path(team) %>
       <% if team.users.include?(current_user) %>
