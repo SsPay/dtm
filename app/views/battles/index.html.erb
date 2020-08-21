@@ -4,9 +4,9 @@
   <small><%= battle.teams.first.name %></small> | <small><%= battle.teams&.second&.name %></small>
 
   <% if battle.teams.count < 2 %>
-    <%= form_with(url: join_battles_path, method: "get", local: true) do %>
-      <%= collection_select(:team_id, :team_id, Team.all, :id, :name) %>
-      <%= hidden_field_tag 'battle_id', battle.id %>
+    <%= form_with(scope: :battle,  url: join_battles_path, method: "get", local: true) do %>
+      <%= collection_select(:battle, :team_id, current_user.teams, :id, :name) %>
+      <%= hidden_field_tag 'battle_id', battle.id, name: "battle[battle_id]" %>
       <%= submit_tag "Join", class: 'btn btn-primary btn-sm' %>
     <% end %>
   <% end %>

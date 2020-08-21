@@ -44,7 +44,7 @@ class TeamsController < ApplicationController
   def join
     @team = Team.find(params[:team_id])
     @team.team_user.create(user_id: current_user.id, role: 'member')
-    redirect_to root_path
+    redirect_to team_path(@team)
   end
 
   private

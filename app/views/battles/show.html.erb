@@ -1,10 +1,16 @@
 <h1>Battle #<%= @battle.id %></h1>
-<%= @battle&.teams&.first.name %> <% @battle.winner_id == @battle&.teams&.first&.id and @battle.winner_id != nil ? "<i class='fa fa-crown'></i>".html_safe : nil %> |
-<%= @battle.teams&.second&.name %> <% @battle.winner_id == @battle.teams&.second&.id and @battle.winner_id != nil ? "<i class='fa fa-crown'></i>".html_safe : nil %>
+
+<% if @battle.winner_id == @battle.teams.first.id %>
+  <p><i class="fa fa-crown"></i> <b><%= @battle.teams.first.name %></b> | <%= @battle.teams.second.name %></p>
+<% elsif @battle.winner_id == @battle.teams.second.id %>
+  <p><%= @battle.teams.first.name %> | <b><%= @battle.teams.second.name %></b> <i class="fa fa-crown"></i></p>
+<% else %>
+    <p><%= @battle.teams.first.name %> |<%= @battle.teams.second.name %></p>
+<% end %>
 <% unless @battle.winner_id %>
   <%= form_tag(set_winner_battles_path, method: "get", id: "search-form mx-auto") do %>
-  <%= collection_select(:winner_id, :winner_id, @battle.teams, :id, :name) %>
-  <%= hidden_field_tag 'battle_id', @battle.id %>
+  <%= collection_select(:battle, :winner_id, @battle.teams, :id, :name) %>
+  <%= hidden_field_tag 'battle_id', @battle.id, name: "battle[battle_id]" %>
   <%= submit_tag "Select winner", class: 'btn btn-primary btn-sm' %>
   <% end %>
 <% end %>
