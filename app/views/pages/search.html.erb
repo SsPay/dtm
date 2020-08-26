@@ -1,0 +1,13 @@
+<h2 class="text-center">Teams</h2>
+<% if @teams.count <= 0 %>
+  <p>Here is empty :(</p>
+<% else %>
+  <% @teams.each do |team| %>
+    <%= link_to team.name, team_path(team) %><br>
+  <% end %>
+<% end %>
+
+<h2 class="text-center">Users</h2>
+<% @users.each do |user| %>
+  <%= link_to user.nickname, user_path(user) %><br>
+<% end %>

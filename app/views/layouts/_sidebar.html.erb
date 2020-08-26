@@ -20,6 +20,14 @@
     <%= link_to destroy_user_session_path, method: :delete, class: "w3-bar-item w3-button" do %>
       <span><i class="fas fa-sign-out-alt fa-lg"></i></span><span> Log out</span>
     <% end %>
+    <hr>
+    <div class="text-center">
+      <%= form_tag search_pages_path, method: :get do %>
+        <%= text_field_tag :q, nil, class: "form-control mr-sm-2 w3-button", required: true%>
+      <button type="submit" class="search-nav btn btn-primary"><i class="fa fa-search"></i>GO</button>
+      <% end %>
+    </div>
+    <hr>
   <% else %>
     <%= link_to new_user_session_path, class: "w3-bar-item w3-button btn btn-info" do %>
       <span><i class="fas fa-sign-in-alt fa-lg"></i></span><span> Log in</span>
