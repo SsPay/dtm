@@ -34,3 +34,20 @@ $fa-font-path: '@fortawesome/fontawesome-free/webfonts';
  .main { grid-area: main; }
 
  .indent { grid-area: indent; }
+
+ div.ex3 {
+   border: 2px solid;
+   width: 500px;
+   height: 110px;
+   overflow: auto;
+   margin-left: auto;
+   margin-right: auto;
+ }
+
+.cab-logo {
+  width: 15px;
+  height: 15px;
+}
+.cab-tm-link {
+  font-size: 25px
+}
