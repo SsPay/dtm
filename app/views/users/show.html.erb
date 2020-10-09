@@ -1,20 +1,24 @@
 <h1><%= @user.nickname.present? ? @user.nickname : @user.email %>
-  <b>[<%= @user.favourite_team_id.present? ? Team.where(id: @user.favourite_team_id).name.upcase : @user.teams.first.name.upcase %>]</b></h1>
-<h2 class="text-center">Teams:</h2>
-<div class="ex3 text-center">
-  <% @teams.each do |team|  %>
-    <%= link_to team do %>
-      <% if team.logo? %>
+  <% if @user.teams.present? %>
+    <b>[<%= @user.favourite_team_id.present? ? Team.where(id: @user.favourite_team_id).name.upcase : @user.teams.first.name.upcase %>]</b></h1>
+    <h2 class="text-center">Teams:</h2>
+    <div class="ex3 text-center">
+    <% @teams.each do |team|  %>
+      <%= link_to team do %>
+        <% if team.logo? %>
           <%= image_tag(team.logo.url(:thumb))%>
           <span><%= team.name %></span>
-      <% else %>
+        <% else %>
           <span class="cab-tm-link"><%= image_tag("https://images-na.ssl-images-amazon.com/images/I/41fhsnzKEgL._SX258_BO1,204,203,200_.jpg", class: "cab-logo")%></span>
           <%= team.name %><hr>
-      <% end  %>
+        <% end  %>
+      <% end %>
     <% end %>
+    </div>
+  <% else %>
+    <br><b>User doesn't habe any teams</b>
   <% end %>
-</div>
 
-
+<br>
 <%= link_to "Edit", edit_user_path %><br>
 <%= link_to "Change your password", edit_user_registration_path %>
