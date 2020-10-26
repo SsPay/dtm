@@ -10,6 +10,17 @@
 
   <body>
     <%= render "layouts/sidebar" %>
-    <%= yield %>
+    <div class="grid-container">
+      <div class="dop">
+        <% Post.all.each do |post| %>
+          <%= link_to post.title, post_path(post) %>
+          <br>
+        <% end %>
+      </div>
+      <div class="main">
+        <%= yield %>
+      </div>
+      <div class="indent"></div>
+    </div>
   </body>
 </html>

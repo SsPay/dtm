@@ -1,6 +1,4 @@
-<div class="grid-container">
-  <div class="dop"><p>news will be right here</p></div>
-  <div class="main">
+
     <% @teams.each do |team| %>
       <%= link_to team.name, team_path(team) %>
       <% if team.users.include?(current_user) %>
@@ -13,6 +11,3 @@
       <% end %>
       <br>
     <% end %>
-  </div>
-  <div class="indent"><p>here is just indent</p></div>
-</div>

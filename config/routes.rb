@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :posts
   root 'users#index'
   get 'join', to: 'teams#join'
   # get '/pages/:page' => 'pages#show'

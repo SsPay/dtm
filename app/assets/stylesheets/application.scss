@@ -1,3 +1,4 @@
+@import "./actiontext.scss";
 @import "bootstrap";
 @import "w3-sidebar";
 $fa-font-path: '@fortawesome/fontawesome-free/webfonts';
@@ -21,6 +22,8 @@ $fa-font-path: '@fortawesome/fontawesome-free/webfonts';
  *= require_tree .
  *= require_self
  */
+
+ body {height: 100%}
  .grid-container {
    display: grid;
    grid-template-columns: 0.3fr 1.9fr 0.8fr;
@@ -50,4 +53,8 @@ $fa-font-path: '@fortawesome/fontawesome-free/webfonts';
 }
 .cab-tm-link {
   font-size: 25px
+}
+.dop {
+  border: 2px solid black;
+  height: 100vh;
 }

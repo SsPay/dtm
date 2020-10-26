@@ -1,0 +1,26 @@
+<div class="container">
+  <%= form_with(model: @post, local: true) do |form| %>
+    <% if @post.errors.any? %>
+      <div class="alert alert-danger">
+        <ul>
+          <% @post.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title, class: "form-control"%>
+  </div>
+
+  <div class="field">
+    <%= form.label :body %>
+    <%= form.rich_text_area :body %>
+  </div>
+  <div class="actions">
+    <%= form.submit 'Submit', class: "btn btn-primary" %>
+  </div>
+  <% end %>
+</div>
